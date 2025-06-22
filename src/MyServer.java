@@ -36,7 +36,7 @@ public class MyServer extends Thread{
 
     public MyServer(){
         try {
-            File file = new File("src\\ConfigurationFile.txt");
+            File file = new File(System.getProperty("user.dir") + "/resources/ConfigurationFile.txt");
             Scanner scanner = new Scanner(file);
             bannedWordList = new ArrayList<>();
             name = scanner.next();
@@ -46,11 +46,15 @@ public class MyServer extends Thread{
             checkBannedWords();
 
             //NETWORK ESTABLISHMENT
+            System.out.println("Server started on port " + port);
             serverSocket = new ServerSocket(port);
             client = null;
 
-        }catch (IOException e){
-            System.out.println("File not found");
+        }catch (SocketException e){
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            System.out.println("File not found here");
         }
     }
     public void listen(){
@@ -127,7 +131,7 @@ public class MyServer extends Thread{
         synchronized (bannedWordList) {
             bannedWordList.clear();
             try {
-                File file = new File("src\\ConfigurationFile.txt");
+                File file = new File(System.getProperty("user.dir") + "/resources/ConfigurationFile.txt");
                 Scanner scanner = new Scanner(file);
                 scanner.next();
                 scanner.next();

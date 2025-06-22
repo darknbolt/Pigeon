@@ -1,4 +1,4 @@
-MyServer 550  please
+MyServer 8080  please
  give
  me
  ten
