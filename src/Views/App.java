@@ -9,12 +9,16 @@ public class App extends JFrame {
 
     public App(){
         this.setTitle("Pigeon");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 600);
         this.setResizable(true);
+        this.setLayout(null);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.layoutController = new LayoutController();
         this.setContentPane(layoutController.getMainPanel());
+        this.layoutController.show(LayoutController.View.REGISTER);
+
         this.setVisible(true);
     }
 }
